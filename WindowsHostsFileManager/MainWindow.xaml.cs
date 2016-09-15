@@ -36,9 +36,12 @@ namespace WindowsHostsFileManager
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             btnRestart.IsEnabled = !Utilities.IsAdministrator();
+            btnSave.IsEnabled = Utilities.IsAdministrator();
             manager.LoadHostsFile();
             lstEntries.DataContext = manager.hostEntries;
         }
+
+
 
         private void btnRestart_Click(object sender, RoutedEventArgs e)
         {
@@ -53,6 +56,22 @@ namespace WindowsHostsFileManager
                 return;
             }
 
+        }
+
+        private void btnReload_Click(object sender, RoutedEventArgs e)
+        {
+            manager.LoadHostsFile();
+            lstEntries.Items.Refresh();
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Window_StateChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == System.Windows.WindowState.Maximized) { this.WindowState = System.Windows.WindowState.Normal; }
         }
     }
 }

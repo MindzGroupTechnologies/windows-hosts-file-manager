@@ -8,7 +8,7 @@
     AllowsTransparency="True"
     MinHeight="400" MinWidth="600"
     Height="400" Width="600"
-    Title="MainWindow" WindowStyle="None" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen" d:DesignWidth="600" d:DesignHeight="400" Loaded="Window_Loaded">
+    Title="MainWindow" WindowStyle="None" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen" d:DesignWidth="600" d:DesignHeight="400" Loaded="Window_Loaded" StateChanged="Window_StateChanged">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -30,8 +30,8 @@
                 </ListBox>
                 <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="10,0">
                     <Button x:Name="btnRestart" Content="Restart as Administrator" Style="{DynamicResource ActionButtonStyleRed}" HorizontalAlignment="Left" VerticalAlignment="Center" Click="btnRestart_Click" />
-                    <Button x:Name="btnReload" Content="Reload" Style="{DynamicResource ActionButtonStyleOrange}" HorizontalAlignment="Left" VerticalAlignment="Center" Click="btnRestart_Click" />
-                    <Button x:Name="btnSave" Content="Save" Style="{DynamicResource ActionButtonStyleGreen}" HorizontalAlignment="Left" VerticalAlignment="Center" Click="btnRestart_Click" />
+                    <Button x:Name="btnReload" Content="Reload" Style="{DynamicResource ActionButtonStyleOrange}" HorizontalAlignment="Left" VerticalAlignment="Center" Click="btnReload_Click" />
+                    <Button x:Name="btnSave" Content="Save" Style="{DynamicResource ActionButtonStyleGreen}" HorizontalAlignment="Left" VerticalAlignment="Center" Click="btnSave_Click" />
                 </StackPanel>
             </Grid>
         </Border>
