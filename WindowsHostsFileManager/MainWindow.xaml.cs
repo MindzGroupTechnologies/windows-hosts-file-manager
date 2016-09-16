@@ -49,7 +49,7 @@ namespace WindowsHostsFileManager
             {
                 // Restart program and run as admin
                 var exeName = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
-                ProcessStartInfo startInfo = new ProcessStartInfo(exeName);
+                var startInfo = new ProcessStartInfo(exeName);
                 startInfo.Verb = "runas";
                 System.Diagnostics.Process.Start(startInfo);
                 Application.Current.Shutdown();
@@ -61,17 +61,41 @@ namespace WindowsHostsFileManager
         private void btnReload_Click(object sender, RoutedEventArgs e)
         {
             manager.LoadHostsFile();
-            lstEntries.Items.Refresh();
+            lstEntries.DataContext = manager.HostEntries;
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-
+            manager.Save();
+            manager.LoadHostsFile();
+            lstEntries.DataContext = manager.HostEntries;
         }
 
         private void Window_StateChanged(object sender, EventArgs e)
         {
             if (this.WindowState == System.Windows.WindowState.Maximized) { this.WindowState = System.Windows.WindowState.Normal; }
+        }
+
+        private void BtnRemoveComments_OnClick(object sender, RoutedEventArgs e)
+        {
+            manager.RemoveComments();
+            lstEntries.DataContext = manager.HostEntries;
+        }
+
+        private void ToggleState_EventHandler(object sender, RoutedEventArgs e)
+        {
+            manager.ToggleState(((Button)sender).DataContext as HostEntry);
+            lstEntries.Items.Refresh();
+        }
+
+        private void BtnClose_OnClick(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void BtnMinimize_OnClick(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = System.Windows.WindowState.Minimized;
         }
     }
 }

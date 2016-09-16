@@ -10,7 +10,7 @@ namespace WindowsHostsFileManager
     {
         public CommentsHostEntry()
         {
-            formattingString = "{{{2}}}";
+            FormattingString = "{{{2}}}";
         }
     }
 }
