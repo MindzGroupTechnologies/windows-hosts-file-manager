@@ -38,7 +38,7 @@ namespace WindowsHostsFileManager
             btnRestart.IsEnabled = !Utilities.IsAdministrator();
             btnSave.IsEnabled = Utilities.IsAdministrator();
             manager.LoadHostsFile();
-            lstEntries.DataContext = manager.hostEntries;
+            lstEntries.DataContext = manager.HostEntries;
         }
 
 
